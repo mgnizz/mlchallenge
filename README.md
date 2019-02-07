@@ -1,11 +1,11 @@
-* ubicarse en la carpeta root del proyecto y ejecutar:
+ubicarse en la carpeta root del proyecto y ejecutar:
 
 *docker build -t mlchallenge .*
 
 (va a tardar un poco mientras se configura maven)
 
 
-* luego ejecutar
+luego ejecutar
 
 *docker run --rm -it -p 8080:8080 mlchallenge*
 
