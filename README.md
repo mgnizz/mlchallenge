@@ -1,6 +1,8 @@
 Es necesario tener instaladas imagenes de maven y de tomcat.
 De no tenerlas ejecutar los siguientes comandos:
+
 *docker pull maven*
+
 *docker pull tomcat*
 
 ubicarse en la carpeta root del proyecto y ejecutar:
