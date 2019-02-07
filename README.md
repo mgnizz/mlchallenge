@@ -9,6 +9,6 @@ luego ejecutar
 
 *docker run --rm -it -p 8080:8080 mlchallenge*
 
-hecho eso ya esta ejecutando el war entrar al link:
+una vez que termine entrar al link:
 
 *http://localhost:8080/ipinfo*
