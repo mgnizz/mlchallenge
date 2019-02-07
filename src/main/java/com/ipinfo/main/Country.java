@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.google.gson.annotations.SerializedName;
@@ -103,9 +104,9 @@ public class Country {
 	}
 	
 	public String getTimesForPrint(){
-		List<OffsetDateTime> times =  getTimes();
-		List<String> str = times.stream().map(t->t.format(DateTimeFormatter.ISO_OFFSET_TIME)).collect(Collectors.toList());		
-		return String.join(" o ", str);
+		
+		Function<OffsetDateTime, String> fromatter =  t ->t.format(DateTimeFormatter.ISO_OFFSET_TIME) ;
+		return joinStringList(getTimes()," o ",fromatter);
 	}
 
 	public String getCurrenciesRate(Map<String, Double> rates) {
@@ -121,6 +122,12 @@ public class Country {
 	}
 	
 	public String getLanguagesForPrint(){
-		return String.join(", ",this.getLanguages().stream().map(l->l.getName() +" ("+l.getIsoName()+")").collect(Collectors.toList()));
+		Function<Language,String> formatter = l->l.getName() +" ("+l.getIsoName()+")";
+		return joinStringList(getLanguages(),", ",formatter);
+	}
+	
+	public <T> String joinStringList(List<T> list, String separator, Function<T,String> formatter){
+		List<String> str = list.stream().map(formatter).collect(Collectors.toList());		
+		return String.join(separator, str);
 	}
 }
